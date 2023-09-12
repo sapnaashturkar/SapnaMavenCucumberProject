@@ -83,7 +83,7 @@ public class AddNewCustomer {
 	}
 	
 	public void selectGender (String gender) {
-		if (gender.equals(gender)) {
+		if (gender.equals("male")) {
 			ldriver.findElement(genderMale).click();
 		}else ldriver.findElement(genderFemale).click();
 	}
@@ -101,8 +101,5 @@ public class AddNewCustomer {
 		ldriver.findElement(savebutton).click();
 	}
 
-	public void successmessage () {
-		ldriver.switchTo().alert().getText();
-		}
-
+	
 }

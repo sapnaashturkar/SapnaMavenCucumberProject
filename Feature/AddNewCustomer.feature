@@ -11,11 +11,11 @@ Feature:AddNewCustomer
  And User click on customer menu item
 And User click on new add button
 Then User can view Add new customer page
-When User enter customer info as "<newemail>" and "<newpass>"	and "<fname>" and "<lname>" and "<gender>"and"<comname>"and "<admincomment>" 
+When When user enter customer info as "<newEmail>" and "<newPass>" and "<fname>" and "<lname>" and "<gender>" and "<comName>" and "<adminComment>" 
 And User click on save button
 Then User can see confirmation message "The new customer has been added successfully."
 And close browser
  Examples:
-|email							|password|newemail			 |newpass|fname|lname|gender|comname|admincomment|
-|admin@yourstore.com|admin	 |sapna@gmail.com|sapna	 |sapna|joshi|Female|Decor	|Textile		 |
+|email							|password|newEmail			 |newPass|fname|lname|gender|comName|adminComment|
+|admin@yourstore.com|admin	 |store@gmail.com|sapna	 |sapna|joshi|Female|Decor	|Textile		 |
  

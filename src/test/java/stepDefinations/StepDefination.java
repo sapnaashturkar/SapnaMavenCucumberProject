@@ -1,6 +1,7 @@
 package stepDefinations;
 
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -138,24 +139,24 @@ public class StepDefination extends BaseClass {
 		Thread.sleep(2000);
 		
 	}
-
-	@When("User enter customer info as {string} and {string} and {string} and {string} and {string} and {string} and {string}")
-	public void user_enter_customer_info_as_(String newemail, String newpass, String fname, String lname, String gender,String comname, String admincomment ) throws Exception {
-		
-		NewCustomer.enterEmail(newemail);
-		Thread.sleep(2000);
-		NewCustomer.enterpassword(newpass);
-		Thread.sleep(2000);
-		NewCustomer.enterFirstName(fname);
-		Thread.sleep(2000);
-		NewCustomer.enterLastName(lname);
-		Thread.sleep(2000);
-		NewCustomer.selectGender(lname);
-		Thread.sleep(2000);
-		NewCustomer.selectCompany(comname);
-		Thread.sleep(2000);
-		NewCustomer.addComment(admincomment);	
-		Thread.sleep(2000);
+	
+	@When("When user enter customer info as {string} and {string} and {string} and {string} and {string} and {string} and {string}")
+	public void when_user_enter_customer_info_as_and_and_and_and_and_and(String newemail, String newpass, String fname, String lname, String gender, String comname, String admincomment) throws Exception {
+	 	
+	NewCustomer.enterEmail(newemail);
+	Thread.sleep(2000);
+	NewCustomer.enterpassword(newpass);
+	Thread.sleep(2000);
+	NewCustomer.enterFirstName(fname);
+	Thread.sleep(2000);
+	NewCustomer.enterLastName(lname);
+	Thread.sleep(2000);
+	NewCustomer.selectGender(gender);
+	Thread.sleep(2000);
+	NewCustomer.selectCompany(comname);
+	Thread.sleep(2000);
+	NewCustomer.addComment(admincomment);	
+	Thread.sleep(2000);
 	}
 
 	@When("User click on save button")
@@ -168,10 +169,9 @@ public class StepDefination extends BaseClass {
 
 	@Then("User can see confirmation message {string}")
 	public void user_can_see_confirmation_message(String string) throws Exception {
-		
-	NewCustomer.successmessage();
-	Thread.sleep(2000);
 	
+		Assert.assertTrue(driver.findElement(By.tagName("body")).getText().contains("The new customer has been added successfully."));
+		Thread.sleep(2000);	Thread.sleep(2000);	    
 	}
 
 	@Then("close browser")
