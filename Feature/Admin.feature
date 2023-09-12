@@ -21,4 +21,4 @@ And close browser
  Examples:
 |email                   |password     |
 |admin@yourstore.com     |admin        |
-|admin@yourstore.com     |admin2		     |
+|admin@yourstore.com     |admin2		   |

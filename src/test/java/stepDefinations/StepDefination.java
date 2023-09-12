@@ -15,10 +15,11 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.cucumber.messages.internal.com.google.protobuf.ByteString.Output;
 import io.cucumber.messages.internal.com.google.protobuf.compiler.PluginProtos.CodeGeneratorResponse.File;
+import pageObject.AddNewCustomer;
 import pageObject.AdminPage;
 import utilities.ReadConfigu;
 
-public class Admin_StepDefination extends BaseClass {
+public class StepDefination extends BaseClass {
 
 	@Before
 	public void setUp() throws Exception {
@@ -79,10 +80,10 @@ public class Admin_StepDefination extends BaseClass {
 
 	}
 
-	@After
-	public void teardown(Scenario sc) throws Exception {
+	//@After
+	//public void teardown(Scenario sc) throws Exception {
 
-		System.out.println("Teardown method is executed");
+		//System.out.println("Teardown method is executed");
 		
 				
 		//if (sc.isFailed()==true) {
@@ -98,8 +99,80 @@ public class Admin_StepDefination extends BaseClass {
 		//File destFile = new File (filewithpath);
 		//}
 		
-		}
+		//}
+	
+	@Then("User can view Dashboard")
+	public void user_can_view_dashboard() throws Exception {
+		
+		NewCustomer = new AddNewCustomer (driver);// To create object of AddNewCustomer class
+		Assert.assertEquals("Dashboard / nopCommerce administration", NewCustomer.getPageTitle());
+		Thread.sleep(2000);
+		
+	}
 
+	@When("User click on customer menu")
+	public void user_click_on_customer_menu() throws Exception {
+		
+		NewCustomer.selectCustomermain();
+		Thread.sleep(2000);
+	}
+
+	@When("User click on customer menu item")
+	public void user_click_on_customer_menu_item() throws Exception {
+	    
+		NewCustomer.selectCustomer();
+		Thread.sleep(2000);
+	}
+
+	@When("User click on new add button")
+	public void user_click_on_new_add_button() throws Exception {
+		
+		NewCustomer.clickAddNewButton();
+		Thread.sleep(2000);
+	}
+
+	@Then("User can view Add new customer page")
+	public void user_can_view_add_new_customer_page() throws Exception {
+	
+		Assert.assertEquals("Add a new customer / nopCommerce administration", NewCustomer.getPageTitle());
+		Thread.sleep(2000);
+		
+	}
+
+	@When("User enter customer info as {string} and {string} and {string} and {string} and {string} and {string} and {string}")
+	public void user_enter_customer_info_as_(String newemail, String newpass, String fname, String lname, String gender,String comname, String admincomment ) throws Exception {
+		
+		NewCustomer.enterEmail(newemail);
+		Thread.sleep(2000);
+		NewCustomer.enterpassword(newpass);
+		Thread.sleep(2000);
+		NewCustomer.enterFirstName(fname);
+		Thread.sleep(2000);
+		NewCustomer.enterLastName(lname);
+		Thread.sleep(2000);
+		NewCustomer.selectGender(lname);
+		Thread.sleep(2000);
+		NewCustomer.selectCompany(comname);
+		Thread.sleep(2000);
+		NewCustomer.addComment(admincomment);	
+		Thread.sleep(2000);
+	}
+
+	@When("User click on save button")
+	public void user_click_on_save_button() throws Exception {
+	
+		NewCustomer.savedata();
+		Thread.sleep(2000);
+	
+	}
+
+	@Then("User can see confirmation message {string}")
+	public void user_can_see_confirmation_message(String string) throws Exception {
+		
+	NewCustomer.successmessage();
+	Thread.sleep(2000);
+	
+	}
 
 	@Then("close browser")
 	public void close_browser() {

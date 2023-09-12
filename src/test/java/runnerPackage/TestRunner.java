@@ -10,7 +10,7 @@ import io.cucumber.junit.CucumberOptions;
 @RunWith(Cucumber.class)
 @CucumberOptions(
 
-		features = ".//Feature/Admin.feature",
+		features = ".//Feature/AddNewCustomer.feature",
 		glue = "stepDefinations",
 		dryRun=false,
 		monochrome=true,
@@ -22,3 +22,4 @@ public class TestRunner {
 
 }
 
+ 
